@@ -8,10 +8,10 @@ RUN apt-get install -qy supervisor unzip
 RUN mkdir -p /var/log/supervisor
 
 # Let's get serf
-ADD https://dl.bintray.com/mitchellh/serf/0.6.1_linux_amd64.zip serf.zip
-RUN unzip serf.zip
-RUN mv serf /usr/bin/
-RUN rm /serf.zip
+ADD https://dl.bintray.com/mitchellh/serf/0.6.1_linux_amd64.zip /var/www/serf.zip
+RUN unzip /var/www/serf.zip
+RUN mv /var/www/serf /usr/bin/
+RUN rm /var/www/serf.zip
 
 # Cleanup
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
