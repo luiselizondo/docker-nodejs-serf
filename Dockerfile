@@ -10,10 +10,10 @@ RUN mkdir -p /var/log/supervisor
 RUN apt-get update --fix-missing
 
 # Let's get serf
-ADD https://dl.bintray.com/mitchellh/serf/0.6.1_linux_amd64.zip /var/www/serf.zip
-RUN unzip /var/www/serf.zip
-RUN mv /var/www/serf /usr/bin/
-RUN rm /var/www/serf.zip
+ADD https://dl.bintray.com/mitchellh/serf/0.6.1_linux_amd64.zip /tmp/serf.zip
+RUN unzip /tmp/serf.zip -d /tmp/serf
+RUN mv /tmp/serf /usr/bin/
+RUN rm /tmp/serf.zip
 
 # Cleanup
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
