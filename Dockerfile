@@ -7,6 +7,8 @@ RUN apt-get -qq update
 RUN apt-get install -qy supervisor unzip
 RUN mkdir -p /var/log/supervisor
 
+RUN apt-get update --fix-missing
+
 # Let's get serf
 ADD https://dl.bintray.com/mitchellh/serf/0.6.1_linux_amd64.zip /var/www/serf.zip
 RUN unzip /var/www/serf.zip
@@ -27,6 +29,10 @@ RUN chmod 755 /*.sh
 # Add configuration
 ADD ./config/supervisord.conf /etc/supervisor/conf.d/supervisord-serf.conf
 
-EXPOSE 80
+EXPOSE 3000
+
+WORKDIR /var/www
+
+VOLUME ["/var/files", "/var/www"]
 
 CMD ["/usr/bin/supervisord", "-n"]
