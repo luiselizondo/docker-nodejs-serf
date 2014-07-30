@@ -4,7 +4,7 @@ MAINTAINER Luis Elizondo "lelizondo@gmail.com"
 RUN apt-get update
 RUN apt-get -qq update
 
-RUN apt-get install -qy supervisor unzip
+RUN apt-get install -qy supervisor unzip git
 RUN mkdir -p /var/log/supervisor
 
 RUN apt-get update --fix-missing
